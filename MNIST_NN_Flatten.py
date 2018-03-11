@@ -27,7 +27,7 @@ def get_model(mode):
         #寫法1
         model = Sequential()
         model.add(Flatten(input_shape=(28,28))) #把dim=(28,28)的資料，拉成784個輸入
-        model.add(Dense(input_dim=28*28, output_dim=500)) # 在新版keras中，output_dim已改為units
+        model.add(Dense(output_dim=500)) # 在新版keras中，output_dim已改為units
         model.add(Activation('sigmoid')) #也可改用relu之類的
         model.add(Dense(output_dim=500))
         model.add(Activation('sigmoid'))
@@ -37,7 +37,7 @@ def get_model(mode):
         #寫法2
         model = Sequential()
         model.add(Flatten(input_shape=(28,28))) #把dim=(28,28)的資料，拉成784個input
-        model.add(Dense(500,input_dim=28*28))
+        model.add(Dense(500))
         model.add(Activation('sigmoid'))
         model.add(Dense(500))
         model.add(Activation('sigmoid'))
@@ -47,7 +47,7 @@ def get_model(mode):
         #寫法3
         model = Sequential()
         model.add(Flatten(input_shape=(28,28))) #把dim=(28,28)的資料，拉成784個input
-        model.add(Dense(500, activation='sigmoid', input_shape=(28*28,)))
+        model.add(Dense(500, activation='sigmoid'))
         model.add(Dense(500, activation='sigmoid'))
         model.add(Dense(10, activation='softmax'))
     return model
